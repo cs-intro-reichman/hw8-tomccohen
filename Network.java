@@ -43,13 +43,15 @@ public class Network {
     *  Otherwise, creates a new user with the given name, adds the user to this network, and returns true. */
     public boolean addUser(String name) {
         if (userCount == users.length) return false;
+        if (name == null) return false;
 
         for (int i = 0; i < userCount; i++)
         {
-            if (users[i].getName() == name) return false;
+            if (users[i].getName().equals(name)) return false;
         }
         User newAcc = new User(name);
-        users[userCount] = newAcc;
+        userCount++;
+        users[userCount - 1] = newAcc;
         return true;
     }
 
