@@ -59,20 +59,12 @@ public class Network {
      *  If any of the two names is not a user in this network,
      *  or if the "follows" addition failed for some reason, returns false. */
     public boolean addFollowee(String name1, String name2) {
-        boolean isName1Exist = false;
-        boolean isName2Exist = false;
+        User user1 = getUser(name1);
+        User user2 = getUser(name2);
+
+        if (user1 == null || user2 == null || user1.getName().equals(user2.getName())) return false;
         
-        for (int i = 0; i < userCount; i++)
-        {
-            if (users[i].getName() == name1) isName1Exist = true;
-            if (users[i].getName() == name2) isName1Exist = true;
-        }
-        if (isName1Exist && isName2Exist)
-        {
-            User uName1 = getUser(name1);
-            return uName1.addFollowee(name2);
-        }
-        return false;
+        return user1.addFollowee(user2.getName());
     }
     
     /** For the user with the given name, recommends another user to follow. The recommended user is
