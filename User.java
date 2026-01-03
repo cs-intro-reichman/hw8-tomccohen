@@ -49,6 +49,7 @@
         }
         return false;
     }
+
     /** Makes this user follow the given name. If successful, returns true. 
      *  If this user already follows the given name, or if the follows list is full, does nothing and returns false; */
     public boolean addFollowee(String name) {
@@ -111,6 +112,7 @@
         if (this.follows(other.name) && other.follows(this.name)) return true;
         return false;
     }
+    
     /** Returns this user's name, and the names that s/he follows. */
     public String toString() {
         String ans = name + " -> ";
